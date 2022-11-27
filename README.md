@@ -8,7 +8,7 @@ Cílem projektu bylo implementovat jednoduchový záznamník a přehrávač melo
 
  
 
-![Keyboard](http://images.knapovsky.com/8bit-producer-diagram.jpg)
+![Keyboard](./src/img/8bit-producer-diagram.svg)
 
 - LCD - _EA DOGM162_
 - Řadič dotykové klávesnice - _MPR121QR2_
@@ -17,7 +17,7 @@ Cílem projektu bylo implementovat jednoduchový záznamník a přehrávač melo
 
 # Popis funkčnosti programu
 
-# ![State-machine](http://images.knapovsky.com/8bit-producer-state-machine.jpg)
+# ![State-machine](./src/img/8bit-producer-state-machine.svg)
 
 ## Režimy programu
 
@@ -27,25 +27,25 @@ Podle zadání projektu má program pracovat ve 3 různých režimech. Mezi rež
 
 V prvním režimu, který je označen jako _„Piano mode“_, program přijímá informace od dotykové klávesnice a na základě stlačeného tlačítka přehrává tón a mění podsvícení LCD displaye. Pro přechod do následujícího, nebo předchozího režimu je možné využít kurzorových tlačítek.
 
-![Keyboard](http://images.knapovsky.com/8bit-producer-keyboard-media.png)
+![Keyboard](./src/img/8bit-producer-keyboard-media.svg)
 
 ### Nahrávání
 
 _„Recording mode“_ pracuje podobně jako _„Piano mode“_, avšak umožňuje uživateli vybrat kurzorovými tlačítky číslo uložiště, do kterého může zaznamenat posloupnost tónu (melodii) pomocí dotykové klávesnice. Tlačítko OK spouští nahrávaní, které je indikováno změnou podsvícení OK tlačítka z blikání na svícení. Náhravání je ukončeno dalším stiskem tlačítka OK, jehož podsvícení se opět vrátí do stavu blikání. Tlačítka na změnu melodie a módu jsou v přůběhu nahrávání blokována. Pokud chce uživatel nahrávat do úložiště, kde je již dříve nahraná melodie, pak je původní melodie odstaněna a přepsána novou. Při nahrávání nejsou ukládány délky tónu a jejich odstupy. Pro přechod do jiného režimu je opět využito kurzorových tlačítek
 
-![KeyboardRec](http://images.knapovsky.com/8bit-producer-keyboard-rec.png)
+![KeyboardRec](./src/img/8bit-producer-keyboard-rec.svg)
 
 ### Přehrávání
 
 _„Playing mode“_ přehrává předem zvolenou melodii z paměťového úložiště. Tóny jsou odděleny konstantním intervalem. Pro výběr melodie a přechod do jiného režimu slouží opět kurzorová tlačítka. Pro spuštění přehrávání je použito tlačítko OK a jako indikace přehrávání je využito změny podsvícení OK tlačítka z blikání na jeho zhasnutí (pro odlišení s módem nahrávání). Při přehrávání melodie je dotyková klávesnice blokována.
 
-![KeyboardPlay](http://images.knapovsky.com/8bit-producer-keyboard-play.png)
+![KeyboardPlay](./src/img/8bit-producer-keyboard-play.svg)
 
 ## Zadávání tónů
 
 Jak již bylo několikrát uvedeno, tóny jsou zadávány pomocí dotykové klávesnice. Přehrávané tóny jsou ve frekvenčním rozsahu 1047 – 1976 Hz, což odpovídá třetí oktávě (C3 – H3).
 
-![Keyboard2](http://images.knapovsky.com/8bit-producer-keyboard.png)
+![Keyboard2](./src/img/8bit-producer-keyboard.svg)
 
 Po zadání tónu je jeho název vypsán na display jak je znázorněno na Obr. 1. Tón je vizualizován dočasnou změnou podsvícení displaye, které je nastaveno tak, aby na sebe navazovalo – červená pro tón C až po světle modrou pro tón H, kde tóny mezi nimi jsou vizualizovány lineární interpolací zabarvení těchto dvou tónů. Tóny je možné zadávat bez jakéhokoliv omezení hned za sebou, avšak jejich délka je programově omezena a není možné bez opětovného stisknutí hrát tón delší jak _0,5_s.
 
